@@ -1,13 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-
 const baseFiles = [
-  { name: "cat", img: "https://placekitten.com/100/100" },
-  { name: "dog", img: "https://placedog.net/100/100" },
-  { name: "car", img: "https://via.placeholder.com/100?text=Car" },
-  { name: "tree", img: "https://via.placeholder.com/100?text=Tree" }
+  { name: "cat", img: "https://i.imgur.com/JYUB0m3.jpeg" },
+  { name: "dog", img: "https://i.imgur.com/5bQZb5w.jpeg" },
+  { name: "car", img: "https://i.imgur.com/2Q9g9bF.jpeg" },
+  { name: "tree", img: "https://i.imgur.com/8Km9tLL.jpeg" }
 ];
-
 function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
