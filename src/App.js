@@ -2,10 +2,22 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const baseFiles = [
-  { name: "🐱" },
-  { name: "🐶" },
-  { name: "🚗" },
-  { name: "🌳" }
+  {
+    name: "cat",
+    img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=200"
+  },
+  {
+    name: "dog",
+    img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=200"
+  },
+  {
+    name: "car",
+    img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200"
+  },
+  {
+    name: "tree",
+    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=200"
+  }
 ];
 
 function shuffle(array) {
@@ -147,7 +159,7 @@ function App() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 90px)",
+          gridTemplateColumns: "repeat(4, 100px)",
           gap: "12px",
           marginTop: "25px"
         }}
@@ -157,21 +169,32 @@ function App() {
             key={card.uid}
             onClick={() => handleClick(card)}
             style={{
-              width: "90px",
-              height: "90px",
+              width: "100px",
+              height: "100px",
               borderRadius: "12px",
               background:
                 card.flipped || card.matched ? "#1e293b" : "#334155",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "28px",
               cursor: "pointer",
-              transition: "0.2s",
+              overflow: "hidden",
               boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
             }}
           >
-            {card.flipped || card.matched ? card.name : "?"}
+            {card.flipped || card.matched ? (
+              <img
+                src={card.img}
+                alt={card.name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+              />
+            ) : (
+              <span style={{ fontSize: "24px", color: "#fff" }}>?</span>
+            )}
           </div>
         ))}
       </div>
