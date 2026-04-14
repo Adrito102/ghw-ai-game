@@ -3,8 +3,7 @@
 An interactive AI-powered memory matching game built during Global Hack Week, featuring secure authentication and a simulated approval-based AI action system.
 
 ## 🚀 Live Demo
-https://ghw-ai-game-4kzz03lnx-c6b02adritobandyopadhyay-6732s-projects.vercel.app/
-
+https://ghw-ai-game-5jchr52c1-c6b02adritobandyopadhyay-6732s-projects.vercel.app/
 ---
 
 ## 🧠 Core Idea
