@@ -1,11 +1,13 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+
 const baseFiles = [
-  { name: "cat", img: "https://i.imgur.com/JYUB0m3.jpeg" },
-  { name: "dog", img: "https://i.imgur.com/5bQZb5w.jpeg" },
-  { name: "car", img: "https://i.imgur.com/2Q9g9bF.jpeg" },
-  { name: "tree", img: "https://i.imgur.com/8Km9tLL.jpeg" }
+  { name: "🐱" },
+  { name: "🐶" },
+  { name: "🚗" },
+  { name: "🌳" }
 ];
+
 function shuffle(array) {
   return [...array].sort(() => Math.random() - 0.5);
 }
@@ -76,7 +78,7 @@ function App() {
               : c
           )
         );
-      }, 800);
+      }, 600);
     }
 
     setFirst(null);
@@ -89,28 +91,55 @@ function App() {
   if (error) return <p>Error: {error.message}</p>;
 
   return isAuthenticated ? (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>🎮 AI Image Matching Game</h1>
-      <p>Welcome: {user?.email}</p>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "#0f172a",
+        color: "#fff",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        padding: "30px"
+      }}
+    >
+      <h1 style={{ marginBottom: "10px" }}>🎮 Memory Match</h1>
+      <p style={{ opacity: 0.7 }}>{user?.email}</p>
 
       <button
         onClick={() =>
           logout({ logoutParams: { returnTo: window.location.origin } })
         }
+        style={{
+          marginTop: "10px",
+          padding: "8px 16px",
+          borderRadius: "8px",
+          border: "none",
+          cursor: "pointer"
+        }}
       >
         Logout
       </button>
 
-      <br /><br />
-
-      <button onClick={startGame}>
+      <button
+        onClick={startGame}
+        style={{
+          marginTop: "20px",
+          padding: "12px 24px",
+          fontSize: "16px",
+          borderRadius: "10px",
+          border: "none",
+          background: "#3b82f6",
+          color: "#fff",
+          cursor: "pointer"
+        }}
+      >
         {gameStarted ? "Restart Game" : "Start Game"}
       </button>
 
-      <h3>Score: {score}</h3>
+      <h3 style={{ marginTop: "15px" }}>Score: {score}</h3>
 
       {allMatched && (
-        <div style={{ color: "green", marginTop: "15px" }}>
+        <div style={{ marginTop: "10px", color: "#22c55e" }}>
           <h2>🎉 You Won!</h2>
         </div>
       )}
@@ -118,10 +147,9 @@ function App() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(4, 110px)",
+          gridTemplateColumns: "repeat(4, 90px)",
           gap: "12px",
-          justifyContent: "center",
-          marginTop: "20px"
+          marginTop: "25px"
         }}
       >
         {cards.map((card) => (
@@ -129,41 +157,40 @@ function App() {
             key={card.uid}
             onClick={() => handleClick(card)}
             style={{
-              width: "110px",
-              height: "110px",
+              width: "90px",
+              height: "90px",
               borderRadius: "12px",
               background:
-                card.flipped || card.matched ? "#fff" : "#222",
+                card.flipped || card.matched ? "#1e293b" : "#334155",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
+              fontSize: "28px",
               cursor: "pointer",
-              boxShadow: "0 4px 8px rgba(0,0,0,0.2)"
+              transition: "0.2s",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.3)"
             }}
           >
-            {card.flipped || card.matched ? (
-              <img
-                src={card.img}
-                alt={card.name}
-                style={{
-                  width: "100px",
-                  height: "100px",
-                  borderRadius: "10px"
-                }}
-              />
-            ) : (
-              <span style={{ color: "#fff", fontSize: "24px" }}>
-                ?
-              </span>
-            )}
+            {card.flipped || card.matched ? card.name : "?"}
           </div>
         ))}
       </div>
     </div>
   ) : (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
+    <div style={{ textAlign: "center", marginTop: "100px" }}>
       <h1>GHW API Project</h1>
-      <button onClick={() => loginWithRedirect()}>
+      <button
+        onClick={() => loginWithRedirect()}
+        style={{
+          padding: "12px 24px",
+          fontSize: "16px",
+          borderRadius: "10px",
+          border: "none",
+          background: "#3b82f6",
+          color: "#fff",
+          cursor: "pointer"
+        }}
+      >
         Login
       </button>
     </div>
@@ -171,4 +198,3 @@ function App() {
 }
 
 export default App;
-
