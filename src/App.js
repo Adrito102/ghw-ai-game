@@ -2,10 +2,22 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const baseFiles = [
-  { name: "cat", img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=200" },
-  { name: "dog", img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=200" },
-  { name: "car", img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200" },
-  { name: "tree", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=200" }
+  {
+    name: "cat",
+    img: "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?w=200"
+  },
+  {
+    name: "dog",
+    img: "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=200"
+  },
+  {
+    name: "car",
+    img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=200"
+  },
+  {
+    name: "tree",
+    img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=200"
+  }
 ];
 
 function shuffle(array) {
@@ -28,7 +40,7 @@ function App() {
   const [score, setScore] = React.useState(0);
   const [gameStarted, setGameStarted] = React.useState(false);
 
-  // 🔥 NEW: Veto system state
+  // Veto system
   const [pendingAction, setPendingAction] = React.useState(false);
 
   const startGame = () => {
@@ -90,19 +102,17 @@ function App() {
 
   const allMatched = cards.length > 0 && cards.every((c) => c.matched);
 
-  // 🔥 AI ACTION (dangerous)
+  // AI Action
   const triggerAIAction = () => {
     setPendingAction(true);
   };
 
-  // ✅ APPROVE
   const approveAction = () => {
-    setCards([]); // simulate destructive action
+    setCards([]);
     setScore(0);
     setPendingAction(false);
   };
 
-  // ❌ DENY
   const denyAction = () => {
     setPendingAction(false);
   };
@@ -150,7 +160,7 @@ function App() {
 
       {allMatched && <h2 style={{ color: "#22c55e" }}>🎉 You Won!</h2>}
 
-      {/* 🔥 VETO MODAL */}
+      {/* VETO MODAL */}
       {pendingAction && (
         <div style={{
           position: "fixed",
@@ -196,14 +206,29 @@ function App() {
             style={{
               width: "100px",
               height: "100px",
-              background: card.flipped || card.matched ? "#1e293b" : "#334155",
+              borderRadius: "12px",
+              background:
+                card.flipped || card.matched ? "#1e293b" : "#334155",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              cursor: "pointer"
+              cursor: "pointer",
+              overflow: "hidden"
             }}
           >
-            {card.flipped || card.matched ? card.name : "?"}
+            {card.flipped || card.matched ? (
+              <img
+                src={card.img}
+                alt={card.name}
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "cover"
+                }}
+              />
+            ) : (
+              <span style={{ fontSize: "24px", color: "#fff" }}>?</span>
+            )}
           </div>
         ))}
       </div>
