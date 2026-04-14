@@ -1,32 +1,79 @@
-# 🎮 AI Memory Match Game
+# 🤖 AI Memory Agent with Veto Control
 
-An interactive memory matching game built during Global Hack Week using modern web technologies.
+An interactive AI-powered memory matching game built during Global Hack Week, featuring secure authentication and a simulated approval-based AI action system.
 
-## 🚀 Features
-- 🔐 Secure authentication with Auth0
-- 🎮 Interactive card matching gameplay
-- 🧠 Stateful game logic using React Hooks
-- 🎨 Clean, responsive UI
+## 🚀 Live Demo
+https://ghw-ai-game-4kzz03lnx-c6b02adritobandyopadhyay-6732s-projects.vercel.app/
+
+---
+
+## 🧠 Core Idea
+
+This project demonstrates how AI agents can be designed to **respect user control and security** by requiring explicit approval before executing sensitive actions.
+
+Inspired by Auth0’s concepts like **Token Vault** and **Asynchronous Authorization (CIBA)**.
+
+---
+
+## ✨ Features
+
+- 🔐 **Secure Authentication** using Auth0
+- 🎮 **Memory Matching Game** built with React
+- 🧠 **AI Agent Simulation**
+- ⚠️ **Veto System for Sensitive Actions**
+  - AI suggests a critical action
+  - User must explicitly approve or deny
+- 🎨 Clean and responsive UI
 - 🌐 Fully deployed on Vercel
 
+---
+
 ## 🛠️ Tech Stack
+
 - React.js
 - Auth0 (Authentication)
 - Vercel (Deployment)
 
-## 🎯 How it works
-Users log in securely, start the game, and match pairs of cards. The game tracks score and provides a win condition.
+---
 
-## 🌐 Live Demo
-https://ghw-ai-game-4kzz03lnx-c6b02adritobandyopadhyay-6732s-projects.vercel.app/
+## ⚙️ How It Works
 
-## 📚 What I learned
-- Implementing OAuth authentication
-- Managing state in React
-- Deploying production-ready apps
-- Debugging real-world issues
+1. User logs in securely
+2. Plays a memory matching game
+3. AI agent can trigger a sensitive action (e.g., reset game)
+4. App pauses execution and asks for user approval
+5. Only after approval → action executes
+
+---
+
+## 🔐 Security Concept
+
+This project simulates:
+
+- **Token Vault idea** → secure handling of user access
+- **Asynchronous Authorization** → user approval required before critical operations
+
+---
+
+## 📚 What I Learned
+
+- Implementing OAuth authentication with Auth0
+- Managing state and game logic in React
+- Designing user-controlled AI interactions
+- Handling real-world deployment issues
+- Building secure-by-design applications
+
+---
 
 ## 🔥 Future Improvements
-- Add difficulty levels
-- Leaderboard system
-- Animations and sound effects
+
+- Real backend with token storage
+- Push notifications for approval
+- Integration with real APIs (Google Drive, Slack)
+- Leaderboard and difficulty levels
+
+---
+
+## 🏁 Conclusion
+
+This project explores how AI systems can remain powerful while still being **safe, transparent, and user-controlled**.
